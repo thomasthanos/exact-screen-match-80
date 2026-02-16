@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, Menu, X } from "lucide-react";
 import { categories } from "@/data/vehicles";
+import CategoryIcon from "./CategoryIcon";
 import ThemeToggle from "./ThemeToggle";
 
 interface SiteHeaderProps {
@@ -30,9 +31,9 @@ const SiteHeader = ({ searchQuery, onSearchChange }: SiteHeaderProps) => {
             <button
               key={cat.id}
               onClick={() => scrollTo(cat.id)}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
             >
-              <span className="mr-1">{cat.icon}</span>
+              <CategoryIcon categoryId={cat.id} className="w-4 h-4" />
               {cat.label}
             </button>
           ))}
@@ -87,7 +88,7 @@ const SiteHeader = ({ searchQuery, onSearchChange }: SiteHeaderProps) => {
                 onClick={() => scrollTo(cat.id)}
                 className="flex items-center gap-2 px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-primary bg-secondary/50 hover:bg-secondary transition-colors"
               >
-                <span className="text-lg">{cat.icon}</span>
+                <CategoryIcon categoryId={cat.id} className="w-5 h-5" />
                 {cat.label}
               </button>
             ))}
