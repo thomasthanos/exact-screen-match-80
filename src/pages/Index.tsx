@@ -67,7 +67,7 @@ const Index = () => {
         </div>
 
         {/* Note */}
-        <div className="container mx-auto px-3 sm:px-4 -mt-10 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 -mt-14 sm:-mt-16 relative z-10">
           <div className="max-w-2xl mx-auto rounded-2xl bg-card/80 backdrop-blur-md border border-primary/20 p-4 sm:p-5 text-center shadow-[0_0_30px_hsl(var(--primary)/0.1)]">
             <p className="text-destructive text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1.5">Note</p>
             <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
