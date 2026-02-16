@@ -1,11 +1,13 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-const SiteFooter = () => {
+const SiteFooter = memo(() => {
   return (
     <footer className="relative overflow-hidden mt-16 border-t border-border bg-secondary/50 backdrop-blur-sm">
       {/* Starfield background */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
+        aria-hidden="true"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(var(--foreground) / 0.3) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
@@ -31,6 +33,8 @@ const SiteFooter = () => {
       </div>
     </footer>
   );
-};
+});
+
+SiteFooter.displayName = "SiteFooter";
 
 export default SiteFooter;

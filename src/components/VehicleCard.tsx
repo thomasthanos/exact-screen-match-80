@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { Vehicle } from "@/data/vehicles";
 import { categoryImages } from "@/data/categoryImages";
 import { vehicleImages } from "@/data/vehicleImages";
@@ -18,18 +19,18 @@ const categoryLabels: Record<string, string> = {
   special: "Special"
 };
 
-const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisabled }: VehicleCardProps) => {
-  const maxHit = Math.max(
+const VehicleCard = memo(({ vehicle, index, isSelected, onCompareToggle, compareDisabled }: VehicleCardProps) => {
+  const maxHit = useMemo(() => Math.max(
     ...vehicle.stats.map((s) => {
       const num = parseInt(s.hits);
       return isNaN(num) ? 0 : num;
     })
-  );
+  ), [vehicle.stats]);
 
   const image = vehicleImages[vehicle.name] || categoryImages[vehicle.category];
 
   return (
-    <div
+    <article
       className={`group rounded-xl bg-card border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 will-change-transform backface-hidden ${
       isSelected ?
       "border-primary shadow-[0_0_30px_hsl(var(--primary)/0.3)] ring-1 ring-primary/50" :
@@ -41,9 +42,13 @@ const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisab
       <div className="relative h-40 sm:h-44 overflow-hidden rounded-t-xl" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
         <img
           src={image}
-          alt={vehicle.name}
+          alt={`${vehicle.name} — ${categoryLabels[vehicle.category] ?? vehicle.category} durability stats`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy" />
+          loading="lazy"
+          decoding="async"
+          width={400}
+          height={176}
+        />
 
         {/* Multi-layer gradient for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
@@ -64,7 +69,8 @@ const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisab
             onCompareToggle(vehicle);
           }}
           disabled={compareDisabled && !isSelected}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 border ${
+          aria-label={isSelected ? `Remove ${vehicle.name} from comparison` : `Add ${vehicle.name} to comparison`}
+          className={`absolute top-3 right-3 w-9 h-9 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 border ${
           isSelected ?
           "bg-primary text-primary-foreground border-primary shadow-[0_0_12px_hsl(var(--primary)/0.4)]" :
           compareDisabled ?
@@ -96,11 +102,10 @@ const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisab
               <span className="text-muted-foreground w-[110px] sm:w-[140px] shrink-0 truncate text-[10px] sm:text-xs font-medium uppercase tracking-wider">
                 {stat.weapon}
               </span>
-              <div className="flex-1 h-1.5 sm:h-2 rounded-full bg-secondary overflow-hidden">
+              <div className="flex-1 h-1.5 sm:h-2 rounded-full bg-secondary overflow-hidden" role="progressbar" aria-valuenow={numVal} aria-valuemin={0} aria-valuemax={maxHit} aria-label={`${stat.weapon}: ${stat.hits} hits`}>
                 <div
                   className="h-full rounded-full bg-primary/60 transition-all duration-500 group-hover:bg-primary"
                   style={{ width: `${Math.max(percentage, 4)}%` }} />
-
               </div>
               <span className="text-primary font-bold font-display text-sm sm:text-base w-7 sm:w-8 text-right tabular-nums">
                 {stat.hits}
@@ -109,8 +114,10 @@ const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisab
 
         })}
       </div>
-    </div>);
+    </article>);
 
-};
+});
+
+VehicleCard.displayName = "VehicleCard";
 
 export default VehicleCard;

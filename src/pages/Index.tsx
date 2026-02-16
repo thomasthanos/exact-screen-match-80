@@ -1,11 +1,12 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, lazy, Suspense, memo } from "react";
 import { vehicles, categories, type Vehicle } from "@/data/vehicles";
 import SiteHeader from "@/components/SiteHeader";
 import VehicleSection from "@/components/VehicleSection";
 import SiteFooter from "@/components/SiteFooter";
-import ComparisonPanel from "@/components/ComparisonPanel";
 import heroImage from "@/assets/gta-hero.jpg";
 import { GitCompare } from "lucide-react";
+
+const ComparisonPanel = lazy(() => import("@/components/ComparisonPanel"));
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -51,8 +52,9 @@ const Index = () => {
         <div className="relative h-[32vh] sm:h-[50vh] md:h-[60vh] overflow-hidden">
           <img
             src={heroImage}
-            alt="GTA Vehicles"
+            alt="GTA Academy — In-game vehicle durability wiki for GTA V"
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -78,7 +80,7 @@ const Index = () => {
       </section>
 
       {/* Vehicle sections */}
-      <main className="container mx-auto px-3 sm:px-4 mt-6 sm:mt-8">
+      <main className="container mx-auto px-3 sm:px-4 mt-6 sm:mt-8" role="main">
         {searchQuery && filtered.length === 0 && (
           <div className="text-center py-12 sm:py-16">
             <p className="text-destructive text-base sm:text-lg font-semibold">No vehicles found for "{searchQuery}"</p>
@@ -108,19 +110,22 @@ const Index = () => {
         <button
           onClick={() => setShowComparison(true)}
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+          aria-label={`Compare ${compareList.length} vehicles`}
         >
           <GitCompare className="w-4 h-4 sm:w-5 sm:h-5" />
           Compare ({compareList.length}/2)
         </button>
       )}
 
-      {/* Comparison panel */}
+      {/* Comparison panel - lazy loaded */}
       {showComparison && (
-        <ComparisonPanel
-          vehicles={compareList}
-          onRemove={handleRemoveFromCompare}
-          onClose={handleCloseComparison}
-        />
+        <Suspense fallback={null}>
+          <ComparisonPanel
+            vehicles={compareList}
+            onRemove={handleRemoveFromCompare}
+            onClose={handleCloseComparison}
+          />
+        </Suspense>
       )}
     </div>
   );
