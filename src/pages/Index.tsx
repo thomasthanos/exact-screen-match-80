@@ -48,28 +48,28 @@ const Index = () => {
 
       {/* Hero */}
       <section id="home" className="pt-12 sm:pt-14">
-        <div className="relative h-[32vh] sm:h-[50vh] md:h-[60vh] overflow-hidden">
+        <div className="relative h-[45vh] sm:h-[55vh] md:h-[65vh] lg:h-[70vh] overflow-hidden">
           <img
             src={heroImage}
             alt="GTA Academy — In-game vehicle durability wiki for GTA V"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-widest text-primary drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)]">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.2em] text-primary drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)]">
               GTA Academy
             </h1>
-            <p className="mt-2 sm:mt-3 text-foreground/80 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-foreground/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-medium">
               In-game vehicle durability wiki — every stat tested with fully upgraded vehicles across multiple rounds.
             </p>
           </div>
         </div>
 
         {/* Note */}
-        <div className="container mx-auto px-3 sm:px-4 -mt-8 sm:-mt-8 relative z-10">
-          <div className="max-w-2xl mx-auto rounded-xl bg-card border border-border p-3 sm:p-4 text-center shadow-lg">
-            <p className="text-destructive text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1">Note</p>
+        <div className="container mx-auto px-3 sm:px-4 -mt-10 sm:-mt-10 relative z-10">
+          <div className="max-w-2xl mx-auto rounded-2xl bg-card/80 backdrop-blur-md border border-primary/20 p-4 sm:p-5 text-center shadow-[0_0_30px_hsl(var(--primary)/0.1)]">
+            <p className="text-destructive text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1.5">Note</p>
             <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
               All testings were done on fully upgraded vehicles. Results may vary slightly — 
               we've listed the most common outcomes after multiple tests.
