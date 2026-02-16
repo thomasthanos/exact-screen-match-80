@@ -38,28 +38,28 @@ const Copyright = () => {
           </p>
 
           {/* Postcard images */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
+          <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center mb-10">
             <div className="text-center group">
-              <div className="w-44 h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src={ped1}
                   alt="Thomas_2873"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="mt-3 text-sm font-semibold text-primary tracking-wide">
+              <p className="mt-3 text-xs sm:text-sm font-semibold text-primary tracking-wide">
                 Thomas_2873
               </p>
             </div>
             <div className="text-center group">
-              <div className="w-44 h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src={ped2}
                   alt="tony_greek"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="mt-3 text-sm font-semibold text-primary tracking-wide">
+              <p className="mt-3 text-xs sm:text-sm font-semibold text-primary tracking-wide">
                 tony_greek
               </p>
             </div>
@@ -109,14 +109,20 @@ const Copyright = () => {
           100% { opacity: 0.25; }
         }
 
-        @keyframes cr-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes cr-snake-spin {
+          from { --cr-angle: 0deg; }
+          to { --cr-angle: 360deg; }
         }
 
         @keyframes cr-float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-6px); }
+        }
+
+        @property --cr-angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
         }
 
         .cr-container {
@@ -127,24 +133,26 @@ const Copyright = () => {
             0 0 100px hsl(var(--primary) / 0.15) inset;
         }
 
-        /* Primary snake line */
         .cr-snake-border,
         .cr-snake-border-2 {
           position: absolute;
-          inset: -2px;
+          inset: 0;
           border-radius: 1.5rem;
           pointer-events: none;
           z-index: 1;
+          padding: 2px;
+          animation: cr-snake-spin 4s linear infinite;
           background: conic-gradient(
-            from 0deg,
+            from var(--cr-angle),
             transparent 0%,
-            transparent 25%,
-            hsl(185 100% 50%) 30%,
-            hsl(185 100% 70%) 33%,
-            transparent 38%,
+            transparent 60%,
+            hsl(185 100% 60%) 70%,
+            hsl(185 100% 80%) 73%,
+            hsl(0 80% 55%) 76%,
+            hsl(185 100% 60%) 79%,
+            transparent 90%,
             transparent 100%
           );
-          animation: cr-spin 3s linear infinite;
           -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -153,22 +161,21 @@ const Copyright = () => {
             linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
           mask-composite: exclude;
-          padding: 2px;
-          filter: drop-shadow(0 0 6px hsl(185 100% 50% / 0.8)) drop-shadow(0 0 15px hsl(185 100% 50% / 0.4));
+          filter: drop-shadow(0 0 8px hsl(185 100% 50% / 0.9)) drop-shadow(0 0 20px hsl(185 100% 50% / 0.4));
         }
 
-        /* Second trailing snake (offset by 180°) */
         .cr-snake-border-2 {
+          animation-delay: -2s;
           background: conic-gradient(
-            from 180deg,
+            from var(--cr-angle),
             transparent 0%,
-            transparent 25%,
-            hsl(185 100% 45%) 30%,
-            hsl(185 100% 60%) 33%,
-            transparent 38%,
+            transparent 60%,
+            hsl(0 80% 55%) 70%,
+            hsl(185 100% 70%) 76%,
+            transparent 85%,
             transparent 100%
           );
-          filter: drop-shadow(0 0 4px hsl(185 100% 50% / 0.6)) drop-shadow(0 0 10px hsl(185 100% 50% / 0.3));
+          filter: drop-shadow(0 0 6px hsl(0 80% 55% / 0.7)) drop-shadow(0 0 15px hsl(185 100% 50% / 0.3));
         }
 
         .cr-title {
