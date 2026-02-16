@@ -39,6 +39,7 @@ const Index = () => {
 
   const handleCloseComparison = useCallback(() => {
     setShowComparison(false);
+    setCompareList([]);
   }, []);
 
   return (
