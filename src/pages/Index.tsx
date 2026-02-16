@@ -56,7 +56,7 @@ const Index = () => {
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
-          <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-4 pb-16 sm:pb-20 md:pb-24">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.2em] text-primary drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)]">
               GTA Academy
             </h1>
