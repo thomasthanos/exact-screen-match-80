@@ -56,50 +56,50 @@
     --gta-orange: 25 95% 53%;
   }
 
-  /* Light mode */
+  /* Light mode - refined */
   .light {
-    --background: 210 20% 96%;
-    --foreground: 220 20% 15%;
+    --background: 210 25% 97%;
+    --foreground: 220 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 220 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 220 25% 12%;
 
-    --primary: 185 100% 30%;
+    --primary: 185 90% 28%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 15% 90%;
+    --secondary: 210 18% 91%;
     --secondary-foreground: 220 20% 20%;
 
-    --muted: 210 12% 92%;
-    --muted-foreground: 215 10% 45%;
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 12% 42%;
 
-    --accent: 185 100% 30%;
+    --accent: 185 90% 28%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 85%;
-    --input: 210 15% 85%;
-    --ring: 185 100% 30%;
+    --border: 210 18% 82%;
+    --input: 210 18% 82%;
+    --ring: 185 90% 28%;
 
-    --sidebar-background: 210 15% 94%;
-    --sidebar-foreground: 220 20% 15%;
-    --sidebar-primary: 185 100% 30%;
+    --sidebar-background: 210 18% 95%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 185 90% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 12% 90%;
-    --sidebar-accent-foreground: 220 20% 15%;
-    --sidebar-border: 210 15% 85%;
-    --sidebar-ring: 185 100% 30%;
+    --sidebar-accent: 210 15% 90%;
+    --sidebar-accent-foreground: 220 25% 12%;
+    --sidebar-border: 210 18% 82%;
+    --sidebar-ring: 185 90% 28%;
 
-    --gta-teal: 185 100% 30%;
-    --gta-teal-glow: 185 100% 40%;
-    --gta-dark: 210 20% 96%;
-    --gta-card-hover: 210 15% 93%;
-    --gta-stat-bg: 210 15% 95%;
+    --gta-teal: 185 90% 28%;
+    --gta-teal-glow: 185 90% 38%;
+    --gta-dark: 210 25% 97%;
+    --gta-card-hover: 210 18% 95%;
+    --gta-stat-bg: 210 18% 96%;
     --gta-red: 0 72% 51%;
     --gta-orange: 25 95% 53%;
   }
@@ -157,4 +157,9 @@
 @keyframes starfieldMove {
   from { transform: translate(0, 0); }
   to { transform: translate(80px, 80px); }
+}
+
+/* Light mode card shadow refinement */
+.light .shadow-lg {
+  --tw-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
 }

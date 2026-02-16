@@ -88,7 +88,6 @@ const Index = () => {
               key={cat.id}
               id={cat.id}
               title={cat.label}
-              icon={cat.icon}
               vehicles={catVehicles}
               compareList={compareList}
               onCompareToggle={handleCompareToggle}

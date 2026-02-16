@@ -1,23 +1,47 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useSyncExternalStore } from "react";
+
+// Singleton theme store so every component shares the same state
+let listeners: (() => void)[] = [];
+
+function getSnapshot(): boolean {
+  return !document.documentElement.classList.contains("light");
+}
+
+function subscribe(cb: () => void) {
+  listeners.push(cb);
+  return () => {
+    listeners = listeners.filter((l) => l !== cb);
+  };
+}
+
+function notifyAll() {
+  listeners.forEach((l) => l());
+}
+
+// Initialize from localStorage on first load
+if (typeof window !== "undefined") {
+  const saved = localStorage.getItem("gta-theme");
+  if (saved === "light") {
+    document.documentElement.classList.add("light");
+  } else {
+    document.documentElement.classList.remove("light");
+  }
+}
 
 export function useTheme() {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const saved = localStorage.getItem("gta-theme");
-    return saved ? saved === "dark" : true;
-  });
+  const isDark = useSyncExternalStore(subscribe, getSnapshot);
 
-  useEffect(() => {
+  const toggle = useCallback(() => {
     const root = document.documentElement;
-    if (isDark) {
+    if (root.classList.contains("light")) {
       root.classList.remove("light");
+      localStorage.setItem("gta-theme", "dark");
     } else {
       root.classList.add("light");
+      localStorage.setItem("gta-theme", "light");
     }
-    localStorage.setItem("gta-theme", isDark ? "dark" : "light");
-  }, [isDark]);
-
-  const toggle = useCallback(() => setIsDark((d) => !d), []);
+    notifyAll();
+  }, []);
 
   return { isDark, toggle };
 }

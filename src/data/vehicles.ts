@@ -183,9 +183,11 @@ export const vehicles: Vehicle[] = [
   ]},
 ];
 
-export const categories = [
-  { id: "cars", label: "Cars", icon: "🚗" },
-  { id: "helicopters", label: "Helicopters", icon: "🚁" },
-  { id: "planes", label: "Planes", icon: "✈️" },
-  { id: "special", label: "Special", icon: "⭐" },
-] as const;
+export type CategoryId = "cars" | "helicopters" | "planes" | "special";
+
+export const categories: { id: CategoryId; label: string }[] = [
+  { id: "cars", label: "Ground Vehicles" },
+  { id: "helicopters", label: "Helicopters" },
+  { id: "planes", label: "Planes" },
+  { id: "special", label: "Special" },
+];
