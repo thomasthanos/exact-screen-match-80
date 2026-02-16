@@ -110,19 +110,13 @@ const Copyright = () => {
         }
 
         @keyframes cr-spin {
-          0% { --cr-angle: 0deg; }
-          100% { --cr-angle: 360deg; }
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
         @keyframes cr-float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-6px); }
-        }
-
-        @property --cr-angle {
-          syntax: "<angle>";
-          initial-value: 0deg;
-          inherits: false;
         }
 
         .cr-container {
@@ -142,7 +136,7 @@ const Copyright = () => {
           pointer-events: none;
           z-index: 1;
           background: conic-gradient(
-            from var(--cr-angle),
+            from 0deg,
             transparent 0%,
             transparent 25%,
             hsl(185 100% 50%) 30%,
@@ -166,7 +160,7 @@ const Copyright = () => {
         /* Second trailing snake (offset by 180°) */
         .cr-snake-border-2 {
           background: conic-gradient(
-            from calc(var(--cr-angle) + 180deg),
+            from 180deg,
             transparent 0%,
             transparent 25%,
             hsl(185 100% 45%) 30%,
