@@ -48,7 +48,7 @@ const Index = () => {
 
       {/* Hero */}
       <section id="home" className="pt-12 sm:pt-14">
-        <div className="relative h-[45vh] sm:h-[55vh] md:h-[65vh] lg:h-[70vh] overflow-hidden">
+        <div className="relative h-[40vh] sm:h-[45vh] md:h-[55vh] lg:h-[60vh] overflow-hidden">
           <img
             src={heroImage}
             alt="GTA Academy — In-game vehicle durability wiki for GTA V"
@@ -56,7 +56,7 @@ const Index = () => {
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-4 pb-16 sm:pb-20 md:pb-24">
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[0.2em] text-primary drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)]">
               GTA Academy
             </h1>
@@ -67,7 +67,7 @@ const Index = () => {
         </div>
 
         {/* Note */}
-        <div className="container mx-auto px-3 sm:px-4 -mt-10 sm:-mt-10 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 -mt-8 relative z-10">
           <div className="max-w-2xl mx-auto rounded-2xl bg-card/80 backdrop-blur-md border border-primary/20 p-4 sm:p-5 text-center shadow-[0_0_30px_hsl(var(--primary)/0.1)]">
             <p className="text-destructive text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1.5">Note</p>
             <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
