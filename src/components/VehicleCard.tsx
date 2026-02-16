@@ -38,7 +38,7 @@ const VehicleCard = ({ vehicle, index, isSelected, onCompareToggle, compareDisab
       style={{ animationDelay: `${index * 50}ms` }}>
 
       {/* Image with overlay */}
-      <div className="relative h-40 sm:h-44 overflow-hidden">
+      <div className="relative h-40 sm:h-44 overflow-hidden rounded-t-xl" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
         <img
           src={image}
           alt={vehicle.name}
