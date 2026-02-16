@@ -40,7 +40,7 @@ const Copyright = () => {
           {/* Postcard images */}
           <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center mb-10">
             <div className="text-center group">
-              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
                 <img
                   src={ped1}
                   alt="Thomas_2873"
@@ -52,7 +52,7 @@ const Copyright = () => {
               </p>
             </div>
             <div className="text-center group">
-              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-32 h-40 sm:w-44 sm:h-56 rounded-2xl border-2 border-primary/50 overflow-hidden bg-secondary/30 shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
                 <img
                   src={ped2}
                   alt="tony_greek"
