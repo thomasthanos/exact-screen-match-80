@@ -1,12 +1,11 @@
-import { useState, useMemo, useCallback, lazy, Suspense, memo } from "react";
+import { useState, useMemo, useCallback, lazy, Suspense } from "react";
 import { vehicles, categories, type Vehicle } from "@/data/vehicles";
 import SiteHeader from "@/components/SiteHeader";
 import VehicleSection from "@/components/VehicleSection";
 import SiteFooter from "@/components/SiteFooter";
+import ComparisonPanel from "@/components/ComparisonPanel";
 import heroImage from "@/assets/gta-hero.jpg";
 import { GitCompare } from "lucide-react";
-
-const ComparisonPanel = lazy(() => import("@/components/ComparisonPanel"));
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -117,15 +116,13 @@ const Index = () => {
         </button>
       )}
 
-      {/* Comparison panel - lazy loaded */}
+      {/* Comparison panel */}
       {showComparison && (
-        <Suspense fallback={null}>
-          <ComparisonPanel
-            vehicles={compareList}
-            onRemove={handleRemoveFromCompare}
-            onClose={handleCloseComparison}
-          />
-        </Suspense>
+        <ComparisonPanel
+          vehicles={compareList}
+          onRemove={handleRemoveFromCompare}
+          onClose={handleCloseComparison}
+        />
       )}
     </div>
   );
