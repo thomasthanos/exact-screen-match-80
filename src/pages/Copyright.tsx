@@ -6,7 +6,7 @@ import together from "@/assets/copyright/together.png";
 
 const Copyright = () => {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden px-4 py-12">
+    <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden px-4 py-6 sm:py-12">
       {/* Neon grid background */}
       <div
         className="fixed inset-0 opacity-20 pointer-events-none z-0"
@@ -20,7 +20,7 @@ const Copyright = () => {
 
       <div className="relative z-10 w-full max-w-3xl">
         {/* Main container with snake border */}
-        <div className="relative rounded-3xl p-8 md:p-10 overflow-hidden cr-container">
+        <div className="relative rounded-3xl p-5 sm:p-8 md:p-10 overflow-hidden cr-container">
           {/* Snake animated borders */}
           <div className="cr-snake-border" />
           <div className="cr-snake-border-2" />
@@ -66,24 +66,24 @@ const Copyright = () => {
           </div>
 
           {/* Cyber card – together image */}
-          <div className="cr-cyber-card mb-8">
+          <div className="cr-cyber-card mb-6 sm:mb-8">
             <div className="relative overflow-hidden rounded-t-2xl">
               <img
                 src={together}
                 alt="Together"
-                className="w-full h-56 object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-36 sm:h-56 object-cover object-center transition-transform duration-500 hover:scale-110"
                 style={{ filter: "contrast(110%)" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
-            <div className="p-6 text-center">
+            <div className="p-4 sm:p-6 text-center">
               <p
-                className="text-lg font-bold text-primary mb-2"
+                className="text-base sm:text-lg font-bold text-primary mb-1 sm:mb-2"
                 style={{ textShadow: "0 0 10px hsl(var(--primary) / 0.6)" }}
               >
                 Our Ambitions
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 We put in a lot of effort to make this project stand out. With
                 passion and teamwork, we created something truly special.
               </p>
