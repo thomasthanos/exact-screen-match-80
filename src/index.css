@@ -113,6 +113,11 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', system-ui, sans-serif;
+    cursor: url('/cursor.svg') 16 16, crosshair;
+  }
+
+  a, button, [role="button"], input[type="submit"], select, label[for] {
+    cursor: url('/cursor.svg') 16 16, pointer;
   }
 
   h1, h2, h3, h4, h5, h6 {
