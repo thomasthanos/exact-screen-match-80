@@ -30,7 +30,11 @@ const Index = () => {
   }, []);
 
   const handleRemoveFromCompare = useCallback((name: string) => {
-    setCompareList((prev) => prev.filter((v) => v.name !== name));
+    setCompareList((prev) => {
+      const next = prev.filter((v) => v.name !== name);
+      if (next.length === 0) setShowComparison(false);
+      return next;
+    });
   }, []);
 
   const handleCloseComparison = useCallback(() => {
