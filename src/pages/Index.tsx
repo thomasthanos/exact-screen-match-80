@@ -48,7 +48,7 @@ const Index = () => {
 
       {/* Hero */}
       <section id="home" className="pt-12 sm:pt-14">
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden min-h-[45vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[65vh]">
           <img
             src={heroImage}
             alt="GTA Academy — In-game vehicle durability wiki for GTA V"
